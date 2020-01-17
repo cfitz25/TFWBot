@@ -1,0 +1,9 @@
+google-cloud-storage
+gsutil
+numpy
+profanityfilter
+pyyaml
+regex
+tensorflow
+tracery
+python-telegram-bot
