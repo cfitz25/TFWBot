@@ -170,7 +170,12 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-
+def all_process(update,context):
+    if(update.message.from_user.id in god_users):
+        print("UPDATE")
+        print(update)
+        print("CONTEXT")
+        print(context)
 def main():
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
@@ -188,8 +193,8 @@ def main():
     dp.add_handler(CommandHandler("set_wait_time",set_wait_time))
     #dp.add_handler(CommandHandler("bye",bye))
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, message_process))
-
+    #dp.add_handler(MessageHandler(Filters.text, message_process))
+    dp.add_handler(MessageHandler(Filters.all, all_process))
     # log all errors
     dp.add_error_handler(error)
 
