@@ -310,7 +310,7 @@ def message_process(update, context):
             #if for t.
             if(message[:3] == "t. "):
                 return _t(update,context,group_id,message)
-        if len(message) > 1:
+        if len(message) > 4:
             if message.lower()[0:3] == "tfw":
                 return _tfw(update,context,group_id,message)
         
