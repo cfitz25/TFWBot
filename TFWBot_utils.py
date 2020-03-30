@@ -166,16 +166,21 @@ class ActionCommandController():
         # print(message_list,_message_list)
         # print(action_list,_action_list)
         for i in _message_list:
+            try:
             #print(i,  _action_list[ind],ind, len(_action_list))
-            if(i == _action_list[ind]):
-                ind += 1
-            if(ind >= len(_action_list)):
-                ret = True
+                if(i == _action_list[ind]):
+                    ind += 1
+                if(ind >= len(_action_list)):
+                    ret = True
+            except Exception as e:
+                print(e,action_list,message_list)
         return ret
     def run(self,msg_msg_type_pair,update,context):
         message, message_type = msg_msg_type_pair
         reply = None
         print(message)
+        for i in "?!)({}[]:.,":
+            message = message.replace(i,"")
         if(message_type == message_types.STICKER):
             if(str(message) in self.actions_sticker):
                 reply = self.grab_reply(self.actions_sticker[str(message)])
